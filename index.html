@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maciel Contabilidade</title>
+    <title>Teste site</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -167,12 +167,34 @@
             height: 100%;
             border: 0;
         }
+
+        #searchResults {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .social-links a {
+            background-color: #DAA520;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #cd9a00;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Maciel Contabilidade</h1>
+    <h1>Teste site</h1>
     <nav>
         <a href="#sobre">Sobre Nós</a>
         <a href="#servicos">Serviços</a>
@@ -183,7 +205,7 @@
 
 <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>Na Maciel Contabilidade, nossa missão é fornecer soluções contábeis que ajudem nossos clientes a alcançar seus objetivos financeiros.</p>
+    <p>Na Teste site, nossa missão é fornecer soluções contábeis que ajudem nossos clientes a alcançar seus objetivos financeiros.</p>
 </section>
 
 <section id="servicos">
@@ -228,6 +250,9 @@
     <h2>Pesquise sua dúvida</h2>
     <input type="text" id="searchQuery" placeholder="Digite sua pergunta...">
     <button class="btn" onclick="search()">Pesquisar</button>
+
+    <!-- Div para exibir resultados da pesquisa -->
+    <div id="searchResults"></div>
 </section>
 
 <!-- Modal para Contato -->
@@ -241,49 +266,46 @@
 </div>
 
 <footer>
-    <p>&copy; 2024 Maciel Contabilidade. Todos os direitos reservados.</p>
+    <div class="social-links">
+        <h2 style="color: #fff; text-align: center;">Siga-nos nas redes sociais</h2>
+        <a href="https://www.instagram.com/macielcontabilidade" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/macielcontabilidade" target="_blank">Facebook</a>
+    </div>
+    <p>&copy; 2024 Teste site. Todos os direitos reservados. CNPJ: 00.000.000/0000-00</p>
 </footer>
 
 <script>
-    // Função para abrir a janela de contato
+    // Função para abrir o modal de contato
     function openContactModal() {
-        document.getElementById('contactModal').style.display = 'block';
+        document.getElementById("contactModal").style.display = "block";
     }
 
-    // Função para fechar a janela de contato
-    document.getElementById('closeModal').onclick = function() {
-        document.getElementById('contactModal').style.display = 'none';
+    // Função para fechar o modal de contato
+    document.getElementById("closeModal").onclick = function() {
+        document.getElementById("contactModal").style.display = "none";
     }
 
-    // Fechar o modal quando clicar fora da área do modal
-    window.onclick = function(event) {
-        const modal = document.getElementById('contactModal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
+    // Função para enviar mensagem para o WhatsApp
+    document.getElementById("sendWhatsApp").onclick = function() {
+        var name = document.getElementById("clientName").value;
+        var message = "Olá, meu nome é " + name + ". Gostaria de saber mais sobre os serviços.";
+        var whatsappUrl = "https://wa.me/5522997599241?text=" + encodeURIComponent(message);
+        window.open(whatsappUrl, '_blank');
+        document.getElementById("contactModal").style.display = "none"; // fecha o modal após enviar
     }
 
-    // Função para enviar a mensagem pelo WhatsApp
-    document.getElementById('sendWhatsApp').onclick = function() {
-        const name = document.getElementById('clientName').value;
-        if (name) {
-            const message = `Olá, meu nome é ${name}. Gostaria de mais informações sobre os serviços.`;
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank'); // Abre o WhatsApp em uma nova aba
-            document.getElementById('contactModal').style.display = 'none'; // Fecha o modal após o envio
-        } else {
-            alert("Por favor, digite seu nome.");
-        }
-    }
-
-    // Função para pesquisa no Google
+    // Função para pesquisar no Google ou Bing
     function search() {
-        const query = document.getElementById('searchQuery').value;
-        if (query) {
-            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            window.open(googleSearchUrl, '_blank'); // Abre a pesquisa no Google em uma nova aba
-        } else {
-            alert("Por favor, digite uma pergunta para pesquisar.");
+        var query = document.getElementById("searchQuery").value;
+        var googleUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+        var bingUrl = "https://www.bing.com/search?q=" + encodeURIComponent(query);
+        window.open(googleUrl, '_blank'); // Você pode trocar para bingUrl se preferir
+    }
+
+    // Fechar o modal ao clicar fora dele
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("contactModal")) {
+            document.getElementById("contactModal").style.display = "none";
         }
     }
 </script>
