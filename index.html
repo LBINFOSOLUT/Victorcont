@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste site</title>
+    <title>Paulo Victor Contabilidade</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -143,6 +143,8 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: inline-block; /* Para o botão de Links Úteis */
+            margin-bottom: 10px; /* Espaçamento entre botões */
         }
 
         .btn:hover {
@@ -192,15 +194,22 @@
         .social-links a:hover {
             background-color: #cd9a00;
         }
+
+        .links-uteis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Espaçamento entre os botões */
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Teste site</h1>
+    <h1>Paulo Victor Contabilidade</h1>
     <nav>
         <a href="#sobre">Sobre Nós</a>
         <a href="#servicos">Serviços</a>
+        <a href="#linksUteis">Links Úteis</a>
         <a href="#localizacao">Localização</a>
         <a href="#contato">Contato</a>
     </nav>
@@ -208,7 +217,10 @@
 
 <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>Na Teste site, nossa missão é fornecer soluções contábeis que ajudem nossos clientes a alcançar seus objetivos financeiros.</p>
+    <p>Na Paulo Victor Contabilidade, somos uma equipe dedicada de profissionais apaixonados por contabilidade e finanças. Com anos de experiência no setor, nosso objetivo é oferecer soluções contábeis personalizadas que atendam às necessidades específicas de cada cliente. Acreditamos que a contabilidade não é apenas uma obrigação fiscal, mas uma ferramenta estratégica essencial para o crescimento e o sucesso dos negócios.</p>
+    <p>Nossa abordagem é centrada no cliente, e nos esforçamos para entender profundamente o seu negócio, suas metas e desafios. Oferecemos uma ampla gama de serviços, incluindo consultoria contábil, auditoria, assessoria fiscal e gestão de folha de pagamento, todos projetados para ajudar nossos clientes a otimizar seus processos financeiros e alcançar uma maior eficiência.</p>
+    <p>Na Paulo Victor Contabilidade, estamos comprometidos com a transparência e a ética em todos os nossos relacionamentos. Acreditamos que a confiança é a base de qualquer parceria de sucesso, e trabalhamos arduamente para construir e manter essa confiança com nossos clientes. Nossa equipe está sempre disponível para fornecer suporte e esclarecimentos, garantindo que você se sinta apoiado em todas as etapas do processo.</p>
+    <p>Se você está procurando um parceiro contábil confiável e experiente, a Paulo Victor Contabilidade é a escolha certa. Estamos prontos para ajudá-lo a navegar pelo complexo mundo das finanças e a alcançar seus objetivos com confiança.</p>
 </section>
 
 <section id="servicos">
@@ -237,83 +249,77 @@
     </div>
 </section>
 
+<!-- Seção de Links Úteis -->
+<section id="linksUteis">
+    <h2>Links Úteis</h2>
+    <div class="links-uteis">
+        <a href="https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" class="btn" target="_blank">Consulta CNPJ</a>
+        <a href="https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/consultapublica.asp" class="btn" target="_blank">Consulta CPF</a>
+        <a href="https://cav.receita.fazenda.gov.br/autenticacao/login" class="btn" target="_blank">Portal E-cac</a>
+        <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei" class="btn" target="_blank">Serviços para MEI</a>
+        <a href="https://www.nfse.gov.br/EmissorNacional/Login" class="btn" target="_blank">Emissor NFS-e</a>
+    </div>
+</section>
+
 <section id="localizacao">
     <h2>Localização</h2>
     <div class="map-container">
-        <iframe src="https://maps.google.com/maps?q=1044%20RJ-216&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14817.5250669247!2d-41.31582396949341!3d-21.804195052037688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdd61394356cb7%3A0xaec4cff833cadd68!2sFl%C3%A1vio%20Contabilidade!5e0!3m2!1spt-BR!2sus!4v1729272796803!5m2!1spt-BR!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
 
 <section id="contato">
     <h2>Contato</h2>
-    <p>Entre em contato conosco para mais informações sobre nossos serviços.</p>
-    <button id="contactBtn" class="btn" onclick="openContactModal()">Fale Conosco</button>
-    
-    <!-- Seção de pesquisa -->
-    <h2>Pesquise sua dúvida</h2>
-    <input type="text" id="searchQuery" placeholder="Digite sua pergunta...">
-    <button class="btn" onclick="search()">Pesquisar</button>
-
-    <!-- Div para exibir resultados da pesquisa -->
-    <div id="searchResults"></div>
+    <p>Gostaríamos de saber como podemos ajudar você! Por favor, entre em contato.</p>
+    <input type="text" id="clientName" placeholder="Como gostaria de ser chamado?">
+    <button class="btn" onclick="sendMessage()">Enviar</button>
 </section>
 
-<!-- Modal para Contato -->
+<!-- Modal de contato -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h2>Como gostaria de ser chamado?</h2>
-        <input type="text" id="clientName" placeholder="Digite seu nome">
-               <button class="btn" id="submitContact" onclick="submitContact()">Enviar</button>
+        <span class="close" onclick="closeContactModal()">&times;</span>
+        <h3>Entre em contato</h3>
+        <input type="text" id="modalClientName" placeholder="Como gostaria de ser chamado?">
+        <button class="btn" onclick="sendMessage()">Enviar</button>
     </div>
 </div>
 
 <footer>
+    <p>© 2024 Paulo Victor Contabilidade. Todos os direitos reservados.</p>
     <div class="social-links">
-        <h2>Siga-nos</h2>
-        <a href="https://www.instagram.com/seuperfil" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/seuperfil" target="_blank">Facebook</a>
-        <a href="https://wa.me/5522997599241" target="_blank">WhatsApp</a>
+        <a href="https://www.instagram.com" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank">Facebook</a>
     </div>
-    <p>&copy; 2024 Teste site. Todos os direitos reservados.</p>
 </footer>
 
 <script>
-    // Função para abrir o modal de contato
     function openContactModal() {
-        document.getElementById('contactModal').style.display = 'block';
+        document.getElementById('contactModal').style.display = "block";
     }
 
-    // Função para fechar o modal de contato
-    document.getElementById('closeModal').onclick = function() {
-        document.getElementById('contactModal').style.display = 'none';
+    function closeContactModal() {
+        document.getElementById('contactModal').style.display = "none";
     }
 
-    // Função para enviar o contato
-    function submitContact() {
-        const name = document.getElementById('clientName').value;
+    function sendMessage() {
+        const name = document.getElementById('clientName').value || document.getElementById('modalClientName').value;
+        const message = `Olá! Meu nome é ${name}. Gostaria de mais informações.`;
+        const whatsappNumber = "+5522999196464"; // Substitua pelo número desejado
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        
         if (name) {
-            alert(`Obrigado, ${name}! Entraremos em contato em breve.`);
-            document.getElementById('contactModal').style.display = 'none';
+            window.open(whatsappLink, '_blank');
+            closeContactModal(); // Fecha o modal após o envio
+            document.getElementById('clientName').value = ''; // Limpa o campo
         } else {
-            alert('Por favor, digite seu nome.');
+            alert("Por favor, insira seu nome.");
         }
     }
 
-    // Função para pesquisar
-    function search() {
-        const query = document.getElementById('searchQuery').value;
-        if (query) {
-            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
-        } else {
-            alert('Por favor, digite algo para pesquisar.');
-        }
-    }
-
-    // Fechar modal se o usuário clicar fora dele
     window.onclick = function(event) {
         if (event.target == document.getElementById('contactModal')) {
-            document.getElementById('contactModal').style.display = 'none';
+            closeContactModal();
         }
     }
 </script>
