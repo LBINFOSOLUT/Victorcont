@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +19,11 @@
         header {
             background-color: rgba(128, 0, 0, 0.9);
             color: #fff;
-            padding: 20px 0;
+            padding: 10px 0; /* Ajuste feito aqui para subir o cabeçalho */
             text-align: center;
+            position: sticky; /* Mantém o cabeçalho fixo */
+            top: 0; /* Fixa no topo */
+            z-index: 1000; /* Coloca acima de outros elementos */
         }
 
         nav {
@@ -261,51 +264,56 @@
         <span class="close" id="closeModal">&times;</span>
         <h2>Como gostaria de ser chamado?</h2>
         <input type="text" id="clientName" placeholder="Digite seu nome">
-        <button class="btn" id="sendWhatsApp">Enviar para WhatsApp</button>
+               <button class="btn" id="submitContact" onclick="submitContact()">Enviar</button>
     </div>
 </div>
 
 <footer>
     <div class="social-links">
-        <h2 style="color: #fff; text-align: center;">Siga-nos nas redes sociais</h2>
-        <a href="https://www.instagram.com/macielcontabilidade" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/macielcontabilidade" target="_blank">Facebook</a>
+        <h2>Siga-nos</h2>
+        <a href="https://www.instagram.com/seuperfil" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/seuperfil" target="_blank">Facebook</a>
+        <a href="https://wa.me/5522997599241" target="_blank">WhatsApp</a>
     </div>
-    <p>&copy; 2024 Teste site. Todos os direitos reservados. CNPJ: 00.000.000/0000-00</p>
+    <p>&copy; 2024 Teste site. Todos os direitos reservados.</p>
 </footer>
 
 <script>
     // Função para abrir o modal de contato
     function openContactModal() {
-        document.getElementById("contactModal").style.display = "block";
+        document.getElementById('contactModal').style.display = 'block';
     }
 
     // Função para fechar o modal de contato
-    document.getElementById("closeModal").onclick = function() {
-        document.getElementById("contactModal").style.display = "none";
+    document.getElementById('closeModal').onclick = function() {
+        document.getElementById('contactModal').style.display = 'none';
     }
 
-    // Função para enviar mensagem para o WhatsApp
-    document.getElementById("sendWhatsApp").onclick = function() {
-        var name = document.getElementById("clientName").value;
-        var message = "Olá, meu nome é " + name + ". Gostaria de saber mais sobre os serviços.";
-        var whatsappUrl = "https://wa.me/5522997599241?text=" + encodeURIComponent(message);
-        window.open(whatsappUrl, '_blank');
-        document.getElementById("contactModal").style.display = "none"; // fecha o modal após enviar
+    // Função para enviar o contato
+    function submitContact() {
+        const name = document.getElementById('clientName').value;
+        if (name) {
+            alert(`Obrigado, ${name}! Entraremos em contato em breve.`);
+            document.getElementById('contactModal').style.display = 'none';
+        } else {
+            alert('Por favor, digite seu nome.');
+        }
     }
 
-    // Função para pesquisar no Google ou Bing
+    // Função para pesquisar
     function search() {
-        var query = document.getElementById("searchQuery").value;
-        var googleUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
-        var bingUrl = "https://www.bing.com/search?q=" + encodeURIComponent(query);
-        window.open(googleUrl, '_blank'); // Você pode trocar para bingUrl se preferir
+        const query = document.getElementById('searchQuery').value;
+        if (query) {
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+        } else {
+            alert('Por favor, digite algo para pesquisar.');
+        }
     }
 
-    // Fechar o modal ao clicar fora dele
+    // Fechar modal se o usuário clicar fora dele
     window.onclick = function(event) {
-        if (event.target == document.getElementById("contactModal")) {
-            document.getElementById("contactModal").style.display = "none";
+        if (event.target == document.getElementById('contactModal')) {
+            document.getElementById('contactModal').style.display = 'none';
         }
     }
 </script>
