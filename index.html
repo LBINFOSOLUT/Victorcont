@@ -9,15 +9,15 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgba(244, 244, 244, 0.8); /* Cor de fundo com leve transparência */
-            background-image: url('imagem.png'); /* Adicione o caminho da imagem aqui */
-            background-size: cover; /* Faz com que a imagem cubra toda a área */
-            background-position: center; /* Centraliza a imagem */
-            background-repeat: no-repeat; /* Evita repetição da imagem */
+            background-color: rgba(244, 244, 244, 0.8);
+            background-image: url('imagem.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         header {
-            background-color: rgba(128, 0, 0, 0.9); /* Vermelho escuro com transparência */
+            background-color: rgba(128, 0, 0, 0.9);
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -26,19 +26,19 @@
         nav {
             display: flex;
             justify-content: center;
-            gap: 15px; /* Espaçamento entre os itens do menu reduzido */
+            gap: 15px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            padding: 10px 15px; /* Menor padding para economizar espaço */
+            padding: 10px 15px;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
 
         nav a:hover {
-            background-color: #DAA520; /* Dourado */
+            background-color: #DAA520;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -46,7 +46,7 @@
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.9); /* Branco com leve transparência */
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -57,15 +57,15 @@
         }
 
         h2 {
-            color: #800000; /* Vermelho escuro */
-            border-bottom: 2px solid #DAA520; /* Dourado */
+            color: #800000;
+            border-bottom: 2px solid #DAA520;
             padding-bottom: 5px;
         }
 
         .services {
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap; /* Permite que os cartões se ajustem em várias linhas */
+            flex-wrap: wrap;
         }
 
         .service-card {
@@ -123,7 +123,7 @@
         }
 
         footer {
-            background-color: rgba(128, 0, 0, 0.9); /* Vermelho escuro com transparência */
+            background-color: rgba(128, 0, 0, 0.9);
             color: #fff;
             text-align: center;
             padding: 10px 0;
@@ -133,7 +133,7 @@
         }
 
         .btn {
-            background-color: #DAA520; /* Dourado */
+            background-color: #DAA520;
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -143,10 +143,9 @@
         }
 
         .btn:hover {
-            background-color: #cd9a00; /* Dourado mais escuro */
+            background-color: #cd9a00;
         }
 
-        /* Estilo de entrada */
         input[type="text"] {
             width: 100%;
             padding: 10px;
@@ -155,10 +154,9 @@
             border-radius: 5px;
         }
 
-        /* Estilo do mapa */
         .map-container {
             width: 100%;
-            height: 400px; /* Altura do mapa */
+            height: 400px;
             margin: 20px auto;
             border-radius: 10px;
             overflow: hidden;
@@ -225,6 +223,11 @@
     <h2>Contato</h2>
     <p>Entre em contato conosco para mais informações sobre nossos serviços.</p>
     <button id="contactBtn" class="btn" onclick="openContactModal()">Fale Conosco</button>
+    
+    <!-- Seção de pesquisa -->
+    <h2>Pesquise sua dúvida</h2>
+    <input type="text" id="searchQuery" placeholder="Digite sua pergunta...">
+    <button class="btn" onclick="search()">Pesquisar</button>
 </section>
 
 <!-- Modal para Contato -->
@@ -244,32 +247,46 @@
 <script>
     // Função para abrir a janela de contato
     function openContactModal() {
-        document.getElementById('contactModal').style.display = "block";
+        document.getElementById('contactModal').style.display = 'block';
     }
 
-    // Fechar a janela de contato
-    document.getElementById('closeModal').onclick = function
-        // Fechar a janela de contato
+    // Função para fechar a janela de contato
     document.getElementById('closeModal').onclick = function() {
-        document.getElementById('contactModal').style.display = "none";
+        document.getElementById('contactModal').style.display = 'none';
     }
 
-    // Enviar para WhatsApp com o nome do cliente
-    document.getElementById('sendWhatsApp').onclick = function() {
-        const clientName = document.getElementById('clientName').value;
-        const message = `Olá, meu nome é ${clientName}. Estou interessado em mais informações sobre seus serviços.`;
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-        document.getElementById('contactModal').style.display = "none"; // Fecha o modal após o envio
-    }
-
-    // Fecha o modal se o usuário clicar fora dele
+    // Fechar o modal quando clicar fora da área do modal
     window.onclick = function(event) {
         const modal = document.getElementById('contactModal');
         if (event.target === modal) {
-            modal.style.display = "none";
+            modal.style.display = 'none';
+        }
+    }
+
+    // Função para enviar a mensagem pelo WhatsApp
+    document.getElementById('sendWhatsApp').onclick = function() {
+        const name = document.getElementById('clientName').value;
+        if (name) {
+            const message = `Olá, meu nome é ${name}. Gostaria de mais informações sobre os serviços.`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank'); // Abre o WhatsApp em uma nova aba
+            document.getElementById('contactModal').style.display = 'none'; // Fecha o modal após o envio
+        } else {
+            alert("Por favor, digite seu nome.");
+        }
+    }
+
+    // Função para pesquisa no Google
+    function search() {
+        const query = document.getElementById('searchQuery').value;
+        if (query) {
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            window.open(googleSearchUrl, '_blank'); // Abre a pesquisa no Google em uma nova aba
+        } else {
+            alert("Por favor, digite uma pergunta para pesquisar.");
         }
     }
 </script>
+
 </body>
 </html>
