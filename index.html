@@ -13,6 +13,7 @@
             background-image: url('imagem.png'); /* Adicione o caminho da imagem aqui */
             background-size: cover; /* Faz com que a imagem cubra toda a área */
             background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
         }
 
         header {
@@ -247,12 +248,15 @@
     }
 
     // Fechar a janela de contato
+    document.getElementById('closeModal').onclick = function
+        // Fechar a janela de contato
     document.getElementById('closeModal').onclick = function() {
         document.getElementById('contactModal').style.display = "none";
     }
 
     // Enviar para WhatsApp com o nome do cliente
-    document.getElementById('sendWhatsApp').onclick = function() {const clientName = document.getElementById('clientName').value;
+    document.getElementById('sendWhatsApp').onclick = function() {
+        const clientName = document.getElementById('clientName').value;
         const message = `Olá, meu nome é ${clientName}. Estou interessado em mais informações sobre seus serviços.`;
         const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
